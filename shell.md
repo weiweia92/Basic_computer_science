@@ -1,17 +1,25 @@
 ## Shell
+
 ### 常见Linux目录
-1. /bin : 二进制目录，存放很多用户级的GNU工具
+
+1. /bin : 全称binary, 含义是二进制。该目录中存储的都是一些二进制文件，文件都是可以被运行的。（可执行文件，指令）
 2. /boot : 启动目录，存放启动文件
-3. /dev : 设备(device)目录，linux在这里创建设备节点
-4. /etc : 系统配置文件目录
-5. /mnt : 挂载目录
+3. /dev : 该目录中主要存放的是外接设备，如盘、其他光盘等。在其中的外接设备是不能直接被使用的，需要挂载(类似window下的分配盘符)
+4. /etc : 存储一些配置文件
+5. /mnt : 当外接设备需要挂载的时候，就需要挂载到mnt目录下。
 6. /opt : 可选目录，常用于存放第三方软件包和数据文件
 7. /proc : 进程目录，存放现有硬件及当前进程的相关信息
-8. /sbin : 系统二进制目录，存放许多GNU管理员级工具
-9. /usr : 用户二进制目录  
-10. /var : 可变目录
-11. /srv : 服务目录，存放本地服务相关文件
+8. /sbin : 全称super binary, 该目录也是存储一些可以被执行的二进制文件，但是必须得有super权限的用户才能执行。
+9. /usr : 存放用户自己安装的软件。类似于windows下的program files。
+10. /var : 变量文件。在正常运行的系统中其内容不断变化的文件。如日志文件等。
+11. /srv : 服务目录，存放服务进程所需的数据文件（如www网络服务和ftp服务）和一些服务的执行脚本。
+12. /home : 表示除了root用户以外其他用户的家目录，类似于windows下的User/用户目录。
+13. /root : 该目录是root用户自己的家目录。
+14. /tmp : 当系统运行时产生的临时文件会在这个目录存放。
+15. /lib : 存放程序的动态库和模块文件。
+
 ### 环境变量
+
 ```
 # 数组变量
 (base) admin@try:/mnt/weiweia92$ mytest=(one two three four five)
@@ -36,8 +44,11 @@ four
 (base) admin@try:/mnt/weiweia92$ unset mytest     #删除整个数组变量
 (base) admin@try:/mnt/weiweia92$ echo ${mytest[*]}
 ```
+
 ### Redirection
+
 #### output redirection
+
 ```
 (base) admin@try:/mnt/weiweia92$ date > test6 # >:若test6文件里有内容则将其覆盖
 (base) admin@try:/mnt/weiweia92$ cat test6
@@ -68,6 +79,7 @@ Tue Oct 13 14:54:47 CST 2020
 > EOF
  3  6 39
 ```
+
 ### Shell Script
 #### Compare
 Numerical comparison  
@@ -128,7 +140,9 @@ result=$(myfunc)
 echo "The value is $result"
 ```
 ![]()  
+
 ### shopt
+
 Linux shell有交互式和非交互式两种工作模式。日常使用shell输出命令得到结果的方式是交互式的方式，而shell脚本使用的是非交互式的  
 ```
 ### shopt
@@ -156,7 +170,9 @@ echo_hello
 #!/bin/bash --login  
 –login使得执行脚本的子shell成为一个login shell，login shell会读取系统和用户的profile及rc文件，因此用户自定义的.bashrc文件中的内容将在执行脚本的子shell中生效。  
 还有一个简单的办法让执行脚本的shell读取.bashrc，在脚本中主动source ~/.bashrc即可。  
+
 ### Special symbol
+
 ```
 $#      添加到shell的参数个数
 $0      shell本身的文件名
@@ -168,7 +184,9 @@ $_      上一个命令的最后一个参数
 $*      以一对双引号给出参数列表
 $@      将各个参数分别加双引号返回
 ```
+
 ### Command line
+
 #### ls
 ```
 # ls支持命令行中定义过滤器，过滤器实际就是进行简单文本匹配的字符串，可以添加到命令行参数之后
@@ -179,6 +197,20 @@ ls -l my_scr[ai]pt # 输出my_scrapt 和my_script
 ls -l my_scr[a-i]pt
 ls -l f[!a]ll 
 ```
+#### mkdir
+```
+mkdir -p ~/a/b/b  # 一次性创建多层不存在的目录
+```
+#### reboot
+
+重启linux系统
+
+#### shutdown
+
+```
+shutdown -h now #立即关机
+```
+
 #### cat
 ```
 (base) admin@try:/mnt/weiweia92$ cat -n test1  # -n:所有行加行号
