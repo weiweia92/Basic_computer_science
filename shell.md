@@ -3,19 +3,33 @@
 ### 常见Linux目录
 
 1. /bin : 全称binary, 含义是二进制。该目录中存储的都是一些二进制文件，文件都是可以被运行的。（可执行文件，指令）
+
 2. /boot : 启动目录，存放启动文件
+
 3. /dev : 该目录中主要存放的是外接设备，如盘、其他光盘等。在其中的外接设备是不能直接被使用的，需要挂载(类似window下的分配盘符)
+
 4. /etc : 存储一些配置文件
+
 5. /mnt : 当外接设备需要挂载的时候，就需要挂载到mnt目录下。
+
 6. /opt : 可选目录，常用于存放第三方软件包和数据文件
+
 7. /proc : 进程目录，存放现有硬件及当前进程的相关信息
+
 8. /sbin : 全称super binary, 该目录也是存储一些可以被执行的二进制文件，但是必须得有super权限的用户才能执行。
+
 9. /usr : 存放用户自己安装的软件。类似于windows下的program files。
+
 10. /var : 变量文件。在正常运行的系统中其内容不断变化的文件。如日志文件等。
-11. /srv : 服务目录，存放服务进程所需的数据文件（如www网络服务和ftp服务）和一些服务的执行脚本。
+
+11. /srv : 服务目录，存放服务进程所需的数据文件（如 www 网络服务和 ftp 服务）和一些服务的执行脚本。
+
 12. /home : 表示除了root用户以外其他用户的家目录，类似于windows下的User/用户目录。
+
 13. /root : 该目录是root用户自己的家目录。
+
 14. /tmp : 当系统运行时产生的临时文件会在这个目录存放。
+
 15. /lib : 存放程序的动态库和模块文件。
 
 ### 环境变量
@@ -48,7 +62,6 @@ four
 ### Redirection
 
 #### output redirection
-
 ```
 (base) admin@try:/mnt/weiweia92$ date > test6 # >:若test6文件里有内容则将其覆盖
 (base) admin@try:/mnt/weiweia92$ cat test6
@@ -81,7 +94,9 @@ Tue Oct 13 14:54:47 CST 2020
 ```
 
 ### Shell Script
+
 #### Compare
+
 Numerical comparison  
 ```
 n1 -eq n2 # equal
@@ -112,24 +127,25 @@ File comparison
 file1 -nt file2 # whether or not file1 is newer than file2
 file1 -ot file2 # whether or not file1 is older than file2
 ```
+
 #### Functions
 ```
 #defining and using a function
 #!/bin/bash
 
 myfunc() {
-				echo "Using function"
+     echo "Using function"
 }
 total=1
 while [ $total -le 3 ]; do
-			myfunc
-      total=$(($total + 1))
+	myfunc
+     total=$(($total + 1))
 done
 echo "Loop finished"
 myfunc
 echo "End of the script"
 ```
-![]()  
+![](pic/1599553164681-1818b70b-0537-4bb0-bb7c-56472db541e7.jpeg)  
 ```
 #!/bin/bash
 myfunc() {
