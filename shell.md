@@ -149,13 +149,13 @@ echo "End of the script"
 ```
 #!/bin/bash
 myfunc() {
-				read -p "Enter a value: " value
-        echo $(($value + 10))
+	read -p "Enter a value: " value
+     echo $(($value + 10))
 }
 result=$(myfunc)
 echo "The value is $result"
 ```
-![]()  
+![](pic/1599553128826-1edcee00-88c0-4f98-ab60-835be9a589a5.jpeg)  
 
 ### shopt
 
@@ -166,12 +166,12 @@ shopt -s opt_name                 #Enable (set) opt_name.
 shopt -u opt_name                 #Disable (unset) opt_name.
 shopt opt_name                    #Show current status of opt_name
 ```
-![]()  
+![](pic/1599532098276-ce0c4737-b10d-4b12-8462-ea925d26d3ca.jpeg)  
 从上图可以看出交互式模式alias扩展功能是开启的  
 ```
 #!/bin/bash
 
-alias echo_hello='echo hello!'
+alias echo_hello='hello!'
 shopt expand_aliases
 echo_hello
 
@@ -179,7 +179,8 @@ shopt -s expand_aliases
 shopt expand_aliases
 echo_hello
 ```
-![]()  
+![](pic/1599532403486-1ae292b0-1f79-427f-a30e-e323920ef7fa.jpeg)  
+
 可以看到在非交互的情况下默认是关闭的但是我们可以用shopt来将其开启。  
 另外，alias别名只在当前shell有效，不能被子shell继承，也不能像环境变量一样export。可以把alias别名定义写在.bashrc文件中，这样如果启动交互式的子shell，则子shell会读取.bashrc，从而得到alias别名定义。但是执行shell脚本时，启动的子shell处于非交互式模式，是不会读取.bashrc的。  
 不过，如果你一定要让执行shell脚本的子shell读取.bashrc的话，可以给shell脚本第一行的解释器加上参数：  
