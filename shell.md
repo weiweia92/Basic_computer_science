@@ -166,7 +166,8 @@ shopt -s opt_name                 #Enable (set) opt_name.
 shopt -u opt_name                 #Disable (unset) opt_name.
 shopt opt_name                    #Show current status of opt_name
 ```
-![](pic/1599532098276-ce0c4737-b10d-4b12-8462-ea925d26d3ca.jpeg)  
+![](pic/1599532098276-ce0c4737-b10d-4b12-8462-ea925d26d3ca.jpeg) 
+
 从上图可以看出交互式模式alias扩展功能是开启的  
 ```
 #!/bin/bash
@@ -184,9 +185,9 @@ echo_hello
 可以看到在非交互的情况下默认是关闭的但是我们可以用shopt来将其开启。  
 另外，alias别名只在当前shell有效，不能被子shell继承，也不能像环境变量一样export。可以把alias别名定义写在.bashrc文件中，这样如果启动交互式的子shell，则子shell会读取.bashrc，从而得到alias别名定义。但是执行shell脚本时，启动的子shell处于非交互式模式，是不会读取.bashrc的。  
 不过，如果你一定要让执行shell脚本的子shell读取.bashrc的话，可以给shell脚本第一行的解释器加上参数：  
-#!/bin/bash --login  
-–login使得执行脚本的子shell成为一个login shell，login shell会读取系统和用户的profile及rc文件，因此用户自定义的.bashrc文件中的内容将在执行脚本的子shell中生效。  
-还有一个简单的办法让执行脚本的shell读取.bashrc，在脚本中主动source ~/.bashrc即可。  
+`#!/bin/bash --login`     
+`–login`使得执行脚本的子shell成为一个`login shell`，`login shell`会读取系统和用户的profile及rc文件，因此用户自定义的`.bashrc`文件中的内容将在执行脚本的子shell中生效。  
+还有一个简单的办法让执行脚本的shell读取`.bashrc`，在脚本中主动`source ~/.bashrc`即可。  
 
 ### Special symbol
 
@@ -214,16 +215,16 @@ ls -l my_scr[ai]pt # 输出my_scrapt 和my_script
 ls -l my_scr[a-i]pt
 ls -l f[!a]ll 
 ```
+
 #### mkdir
 ```
 mkdir -p ~/a/b/b  # 一次性创建多层不存在的目录
 ```
-#### reboot
 
+#### reboot
 重启linux系统
 
 #### shutdown
-
 ```
 shutdown -h now #立即关机
 ```
@@ -237,6 +238,9 @@ shutdown -h now #立即关机
      4
      5
      6  That we'll use to       test the cat command.
+```
+
+```
 (base) admin@try:/mnt/weiweia92$ cat -b test1 #-b: 只给有文本的行加行号
      1  hello
 
@@ -244,6 +248,9 @@ shutdown -h now #立即关机
 
 
      3  That we'll use to       test the cat command.
+```
+
+```
 (base) admin@try:/mnt/weiweia92$ cat -T test1 # -T:不让制表符(tab)出现
 hello
 
@@ -251,6 +258,9 @@ This is a test file.
 
 
 That we'll use to ^Itest the cat command.
+```
+
+```
 (base) admin@try:/mnt/weiweia92$ cat test1 
 hello
 
@@ -260,17 +270,20 @@ This is a test file.
 That we'll use to       test the cat command.
 ```
 #### less
+
 #### tail/head
 ```
 tail -n 2 log_file #显示log_file的后两行（tail默认为10行）
 head -5 log_file #显示log_file的前五行
 ```
+
 #### mkdir and rmdir
 ```
 odir=$outdir/$ts/
 mkdir -p $odir #若$ourdir不存在，则建立一个(若不加-p,且$outdir不存在，则会报错)
 rmdir $odir    #删除$odir
 ```
+
 #### chown and chmod
 The mode which consists of 3 parts,owner,group and others.   
 Read=4, write=2, execute=1  
@@ -279,6 +292,7 @@ chmod 755 myfile
 # owner:7=4+2+1, group:5=4+1, other:5=4+1
 # Note:execute for a folder,means opening it.
 ```
+
 #### tar
 ```
 tar -czvf myfiles.tar.gz myfiles #压缩myfiles为myfiles.tar.gz
@@ -288,14 +302,17 @@ tar -xzvf mytar.tar.gz #解压
 ```
 file myfile # viewing the file type
 ```
+
 #### du/df
 ```
 du -hs . #当前各文件大小
 df -h    # show the disk free space
 ```
+
 #### exit
 `Linux exit`命令用于退出目前的`shell`。   
 执行`exit`可使`shell`以指定的状态值退出。若不设置状态值参数，则`shell`以预设值退出。状态值0代表执行成功，其他值代表执行失败。`exit`也可用在`script`，离开正在执行的`script`，回到`shell`   
+
 #### sed (The tool of text processing)
 用于字符串操作的便捷工具。
 ```
@@ -349,11 +366,13 @@ $ echo ',123'|sed 's/./dog/1'
 dog123
 
 ```
-* 不打印出全文，仅打印更改所涉及行，或者说仅打印受影响的行在sed后面加-n,是阻止默认的自动打印模式的选项，同时在 替换目标option 的位置 写上p，表明打印print。
+
+- 不打印出全文，仅打印更改所涉及行，或者说仅打印受影响的行在sed后面加-n,是阻止默认的自动打印模式的选项，同时在 替换目标option 的位置 写上p，表明打印print。
 ```
 # 打印发生替换的行
 sed -n 's/cat/dog/gp' pet.txt
 ```
+
 #### sed的y命令
 不同于上面的s命令，以字符串或模式为单位替换为一个整体，y是罗列置换每个对应的字符。
 语法：  
@@ -387,6 +406,7 @@ ZHANG SAN
 li qi
 ```
 #### awk
+
 #### gsub
 gsub函数使得所有正则表达式被匹配时都发生替换   
 gsub(regular expression, sub_str, target_str)   
@@ -408,6 +428,7 @@ awk -F '|' 'BEGIN{ OFS="|" } {sub(/[0-9]+/,"",$2);print $0}' data.test
 or
 awk -F '|' -v OFS='|' '{sub(/[0-9]+/,"",$2);print $0}' data.test
 ```
+
 #### seq
 ```
 (base) admin@try:/$ seq -s , 1 9 #打印从1到9的序列并以,分隔
@@ -419,16 +440,19 @@ awk -F '|' -v OFS='|' '{sub(/[0-9]+/,"",$2);print $0}' data.test
 0003
 0004
 ```
+
 #### pushd and popd
 pushd和popd使用栈的方式来管理目录  
 pushd:将目录加入到栈顶部，并将当前目录切换到该目录。若不加任何参数，该命令用于将栈顶的两个目录进行对调  
 popd:删除目录栈中的目录。若不加任何参数，则会首先删除目录栈顶的目录，并将当前目录切换到栈顶下面的目录。  
+
 #### rsync  
 ```
 sudo apt install rsync
 rsync -a /path/to/source/ /path/to/destination #将多个文件夹中的文件合并到一个文件夹
 ```
 #### iconv
+
 #### rename
 ```
 rename 's/^/logo/' *.png  #将*.png变为logo*.png 即对文件加前缀
@@ -449,3 +473,5 @@ This is: third item
 This is: fourth item
 This is: I'll do it item
 ```
+
+### htop
