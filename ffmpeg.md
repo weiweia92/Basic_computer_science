@@ -31,6 +31,12 @@ FFmpeg的用户有Google，Facebook，Youtube，优酷，爱奇艺，土豆等
 
 ### 3. ffmpeg的简单用法
 
+#### 提取音频
+
+```
+ffmpeg -i <video_path> -ac 2 -f wav <audio_path>
+```
+
 #### 转码
 
 ```

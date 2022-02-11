@@ -271,6 +271,13 @@ That we'll use to       test the cat command.
 ```
 #### less
 
+#### kill
+
+```
+ps -ax
+kill <id>
+```
+
 #### tail/head
 ```
 tail -n 2 log_file #显示log_file的后两行（tail默认为10行）
